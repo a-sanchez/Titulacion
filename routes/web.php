@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\AccesoController;
+use App\Http\Controllers\FilesController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdministradorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,18 +29,29 @@ Route::get('usuarios/usuario_nuevo',function(){
 
 
 /*------------------------ARCHIVOS-------------------------------*/
-Route::get('alumno/catalogo',function(){
-    return view('alumno.cat_archivos');
-});
+// Route::get('alumno/catalogo',function(){
+//     return view('alumno.cat_archivos');
+// });
 
-Route::get('alumno/agregar_archivo',function(){
-    return view('alumno.add_archivo');
-});
+// Route::get('alumno/agregar_archivo',function(){
+//     return view('alumno.add_archivo');
+// });
+Route::resource('usuarios',AccesoController::class);
+Route::resource('alumno',FilesController::class);
 /*----------------------ADMINISTRADOR-------------------------- */
-Route::get('administrador/add_admin',function(){
-    return view('administrador.add_admin');
-});
+// Route::get('administrador/add_admin',function(){
+//     return view('administrador.add_admin');
+// });
 
-Route::get('administrador/vista_admin',function(){
-    return view('administrador.vista_admin');
+// Route::get('administrador/vista_admin',function(){
+//     return view('administrador.vista_admin');
+// });
+
+Route::resource('administrador',AdministradorController::class);
+/*-----------------------CREDITOS--------------------------*/
+Route::get('creditos/view_creditos',function(){
+    return view('creditos.view_creditos');
+});
+Route::get('creditos/creditos',function(){
+    return view('creditos.view_creditos_admin');
 });

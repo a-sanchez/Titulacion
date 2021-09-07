@@ -5,7 +5,7 @@
 
 @section("body")
     <div class="col-md-12" style="text-align: end;">
-        <a href="../administrador/add_admin" class="btn mt-2" style="background: #b41a1a;color: white;">Administrador</a>
+        <a href="{{url("/administrador/create")}}" class="btn mt-2" style="background: #b41a1a;color: white;">Administrador</a>
     </div>
 <div class="container">
     <div class="col-md-12">
@@ -21,8 +21,8 @@
     <div class="row d-flex flex-row justify-content-center alig-items-center">
         <div class="col-md-4">
             <a><i style="font-size:1.5rem;color:red" id="user-alt"  class="fas fa-user-alt"></i></a>
-            <label for="nombre_usuario" >Nombre Completo</label>
-            <input type="text" class="form-control" id="name" name="name" required style="background: #DDDDDD;">
+            <label for="nombre_completo" >Nombre Completo</label>
+            <input type="text" class="form-control" id="nombre_completo" name="nombre_completo" required style="background: #DDDDDD;">
         </div>
     </div>
     <br>
@@ -76,10 +76,35 @@
     <br>
     <div class="row d-flex flex-row justify-content-center mb-4">
         <div class="col-md-4" style="text-align: center;">
-            <a href="../alumno/catalogo" class="btn btn-success">Iniciar sesión</a>
+            <button type="submit" class="btn btn-success">Iniciar sesión</button>
             <a class="btn btn-danger" href="../">Cancelar</a>
         </div>
     </button>
     </form>
 </div>
+@endsection
+@section('scripts')
+<script>
+    async function insertUser(){
+        event.preventDefault();
+        let form = new FormData(document.getElementById("form-users"));
+        let url="{{url('/usuarios')}}";
+        let init={
+            method:"POST",
+            body:form
+        }
+        let req=await fetch(url,init);
+        if(req.ok){
+           window.location.href="{{url('/alumno')}}";
+        }
+        else{
+            Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: "Error al registrar usuario"
+            });
+        }
+    }
+
+</script>
 @endsection

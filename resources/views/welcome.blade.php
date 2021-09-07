@@ -55,7 +55,7 @@
                             {{-- <button id="submit" type="submit" class="btn btn-primary btn-send-message">Entrar</button> --}}
                         </div>
                         <div class="form-group my-3" style="text-align: center;">
-                            <a href="administrador/vista_admin" class="btn btn-success">Iniciar sesión</a>
+                            <a href="{{url("/administrador")}}" class="btn btn-success">Iniciar sesión</a>
                             {{-- <button id="submit" type="submit" class="btn btn-primary btn-send-message">Entrar</button> --}}
                         </div>
                     </form>

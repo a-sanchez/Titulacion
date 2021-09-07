@@ -66,7 +66,7 @@ nav {
 			<a href="../" class="text-light" style="text-decoration: none;"><i id="arrow-circle-left" class="fas fa-arrow-circle-left me-2"></i>Salir</a>
 		</div>
 		<div class="col-5 col-md-2">
-			<a id="logo-header" href="#">
+			<a id="logo-header" href="http://www.sistemas.uadec.mx/">
 				<img src={{asset("images/sistemas.jpg")}} class="w-100" >
 			</a>
 		</div>

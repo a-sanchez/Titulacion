@@ -24,7 +24,7 @@
             </h1>
         </div>
     </div>
-    <a type="button" class="btn" id="btnAgregar" href="../alumno/agregar_archivo" style="background:#DD0031;color:white;">Agregar Archivo</a>
+    <a type="button" class="btn" id="btnAgregar" href={{url("alumno/create")}} style="background:#DD0031;color:white;">Agregar Archivo</a>
     <div class="row">
         <div class="col-12">
             <table class="table pt-2" id="archivos_table">
@@ -35,20 +35,31 @@
                     <th>Opciones</th>
                 </thead>
                 <tbody>
+                @foreach($files as $file)
+                    
                 <tr style="vertical-align: middle;">
-                    <td>CONFERENCIA INDUSTRIA 4.0</td>
-                    <td>ACADEMICO</td>
-                    <td>2.0</td>
-                    <td width="15%">
+                    <td>{{$file->actividad}}</td>
+                    <td>{{$file->type->tipo}}</td>
+                    <td>{{$file->type->cantidad}}</td>
+                    <td width="20%">
                         <a  type="button" style="color: red;" href="#" class="btn"><i style="font-size:1.5rem" id="file-alt"  class="fas fa-file-alt"></i></a>
-                        <a  type="button" style="color: #f7dd0b; " class="btn"  href="#"><i style="font-size:1.5rem;" id="pen"  class="fas fa-pen"></i></a>
-                        <a  style="color: black" href="#" class="btn"><i style="font-size:1.5rem" id="trash-alt"  class="fas fa-trash-alt"></i></a>
+                        <a  style="color: black" href="#" onclick='borrarFile({{$file->id}})' class="btn"><i style="font-size:1.5rem" id="trash-alt"  class="fas fa-trash-alt"></i></a>
                     </td>                 
+                </tr>
+                 @endforeach
+                <tr style="vertical-align: middle;">
+                <td></td>
+                <td>TOTAL DE CREDITOS</td>
+                <td>{{$orders[0]->total}}</td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
+    <footer class="d-flex align-items-center">
+      <p class="m-4">Si deseas conocer cuantos créditos se otorgan por actividad dar clic al icono </p>
+     <a href={{url("creditos/view_creditos")}}><i style="font-size:2rem;color:black" id="list-alt"  class="far fa-list-alt"></i></a>
+    </footer>
 </div>
 @endsection
 @section("scripts")
@@ -56,6 +67,27 @@
     let table = $("#archivos_table").dataTable({
         responsive: true
     });
-
+    
+     async function borrarFile(id) {
+    event.preventDefault();
+    let url='{{url("/alumno/{id}")}}'.replace('{id}',id);
+    let init = {
+        method: "DELETE",
+        headers: {  'X-CSRF-TOKEN': "{{csrf_token()}}" }
+        }
+    
+    let req=await fetch(url,init);
+    return confirm('¿Estas seguro?');
+    if (req.ok){
+        location.reload();
+    }
+    else{
+        Swal.fire({
+            icon:"error",
+            title:"Error",
+            text:"ERROR AL BORRAR ARCHIVO"
+        });
+    }
+    }
 </script>
 @endsection

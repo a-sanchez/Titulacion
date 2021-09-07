@@ -34,16 +34,22 @@
                     <th>Cantidad de créditos</th>
                 </thead>
                 <tbody>
+                @foreach($students as $student)
                 <tr style="vertical-align: middle;">
-                    <td>ANGELA GABRIELA SANCHEZ NIÑO</td>
-                    <td>9</td>
-                    <td>EDITH CARVAJAL</td>
-                    <td>25</td>               
+                    <td>{{$student->nombre_completo}}</td>
+                    <td>{{$student->semestre}}</td>
+                    <td>{{$student->tutor}}</td>
+                    <td>{{$orders[0]->total}}</td>               
                 </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
     </div>
+    <footer class="d-flex align-items-center">
+      <p class="m-0">Si deseas conocer cuantos créditos se otorgan por actividad dar clic al icono </p>
+     <a class="ms-3 "href={{url("creditos/creditos")}}><i style="font-size:2rem;color:black" id="list-alt"  class="far fa-list-alt"></i></a>
+    </footer>
 </div>
 @endsection
 @section("scripts")

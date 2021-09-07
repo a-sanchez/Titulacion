@@ -20,8 +20,8 @@
     <div class="row d-flex flex-row justify-content-center alig-items-center">
         <div class="col-md-4">
             <a><i style="font-size:1.5rem;color:red" id="user-alt"  class="fas fa-user-alt"></i></a>
-            <label for="nombre_usuario" >Nombre Completo</label>
-            <input type="text" class="form-control" id="name" name="name" required style="background: #DDDDDD;">
+            <label for="nombre_completo" >Nombre Completo</label>
+            <input type="text" class="form-control" id="nombre_completo" name="nombre_completo" required style="background: #DDDDDD;">
         </div>
     </div>
     <br>
@@ -59,10 +59,34 @@
     <br>
     <div class="row d-flex flex-row justify-content-center mb-4">
         <div class="col-md-4" style="text-align: center;">
-            <a href="../administrador/vista_admin" class="btn btn-success">Iniciar sesión</a>
+            <button type="submit" class="btn btn-success">Iniciar sesión</button>
             <a class="btn btn-danger" href="../">Cancelar</a>
         </div>
     </button>
     </form>
 </div>
+@endsection
+@section('scripts')
+<script>
+     async function insertAdministrativo(){
+        event.preventDefault();
+        let form = new FormData(document.getElementById("form-users"));
+        let url="{{url('/administrador')}}";
+        let init={
+            method:"POST",
+            body:form
+        }
+        let req=await fetch(url,init);
+        if(req.ok){
+           window.location.href="{{url('/administrador')}}";
+        }
+        else{
+            Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: "Error al registrar usuario"
+            });
+        }
+    }
+</script>
 @endsection
