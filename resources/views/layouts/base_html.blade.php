@@ -63,7 +63,7 @@ nav {
 <div class="container-fluid">
 	<div class="row justify-content-between align-items-center bg-dark pt-3 pb-3">
 		<div class="col-3 col-md-2">
-			<a href="../" class="text-light" style="text-decoration: none;"><i id="arrow-circle-left" class="fas fa-arrow-circle-left me-2"></i>Salir</a>
+			<a href="{{url('/salir')}}" class="text-light" style="text-decoration: none;"><i id="arrow-circle-left" class="fas fa-arrow-circle-left me-2"></i>Salir</a>
 		</div>
 		<div class="col-5 col-md-2">
 			<a id="logo-header" href="http://www.sistemas.uadec.mx/">

@@ -19,8 +19,8 @@
 <div class="mt-3">
     <div class="row">
         <div class="col-12 col-md-12">
-            <h1 class="animate-box fadeInLeft animated" data-animate-effect="fadeInLeft" style="text-align:center;font-weight: bold;">
-                ¡BIENVENIDO!
+            <h1 class=" mb-3 animate-box fadeInLeft animated" data-animate-effect="fadeInLeft" style="text-align:center;font-weight: bold;background:red;color:white;">
+                ¡BIENVENIDO {{ Auth::user()->nombre_completo}} !
             </h1>
         </div>
     </div>
@@ -39,7 +39,14 @@
                     <td>{{$student->nombre_completo}}</td>
                     <td>{{$student->semestre}}</td>
                     <td>{{$student->tutor}}</td>
-                    <td>{{$orders[0]->total}}</td>               
+                    <td>                        
+                        @if($orders[0]==0)
+                        0
+                        @else 
+                        {{$orders[0]->total}}
+                        @endif
+
+                    </td>               
                 </tr>
                 @endforeach
                 </tbody>
@@ -48,7 +55,7 @@
     </div>
     <footer class="d-flex align-items-center">
       <p class="m-0">Si deseas conocer cuantos créditos se otorgan por actividad dar clic al icono </p>
-     <a class="ms-3 "href={{url("creditos/creditos")}}><i style="font-size:2rem;color:black" id="list-alt"  class="far fa-list-alt"></i></a>
+     <a class="ms-3 "href={{url("creditos/creditos")}}><i style="font-size:2rem;color:red" id="list-alt"  class="far fa-list-alt"></i></a>
     </footer>
 </div>
 @endsection

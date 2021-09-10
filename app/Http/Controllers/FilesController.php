@@ -26,6 +26,7 @@ class FilesController extends Controller
                 ->where ('files.id_student','=',1)
                 ->groupBy('id_student')
                 ->get();
+                
         return view('alumno.cat_archivos',compact("files","student","orders"));
 
 
@@ -53,6 +54,9 @@ class FilesController extends Controller
     {
         $validation=$request->all();
         $file = files::create($validation);
+        if (isset($request["file"])) {
+            $file->setFile($validation["file"]);
+         }
         return response()->json("Archivo insertado con exito",201);
 
     }

@@ -28,6 +28,11 @@ class AdministradorController extends Controller
                 ->where ('files.id_student','=',1)
                 ->groupBy('id_student')
                 ->get();
+                // var_dump($orders);
+                // die;
+           if ($orders->isEmpty()) {
+               $orders[0]=0.0;
+           }
         return view('administrador/vista_admin',compact("files","students","orders"));
     }
 
@@ -51,7 +56,7 @@ class AdministradorController extends Controller
     {
         $validation=$request->all();
         $validation["password"]=Hash::make($validation["password"]);
-        $user=administrador::create($validation);
+        $user=acceso::create($validation);
         return response()->json("Usuario creado con exito",201);
     }
 
