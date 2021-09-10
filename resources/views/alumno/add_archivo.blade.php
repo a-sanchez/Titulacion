@@ -9,19 +9,18 @@
         background: #0d6efd;
         border: #0d6efd;
     }
-
 </style>
 @endsection
 
 @section("body")
 <div class="container mt-3">
     <div class="col-md-12">
-        <h2 class="animate-box fadeInLeft animated mt-4" data-animate-effect="fadeInLeft" style="text-align:center;font-weight: bold;">
+        <h2 class="animate-box fadeInLeft animated mt-4" data-animate-effect="fadeInLeft" style="text-align:center;font-weight: bold;background:red;color:white;">
             Agregar un nuevo archivo
         </h2>
-        <h5 class="animate-box fadeInLeft animated mt-2" data-animate-effect="fadeInLeft" style="text-align:center;">Favor de rellenar los siguientes campos</h5>
+        <h5 class="animate-box fadeInLeft animated mt-2" data-animate-effect="fadeInLeft" style="text-align:center;font-weight: bold;">Favor de rellenar los siguientes campos</h5>
     </div>
-    <form id="form-files" onSubmit='insertArchivo();'>
+    <form id="form-files" onSubmit='insertArchivo();' >
         @csrf
         <div class="row d-flex flex-row justify-content-center alig-items-center">
             <div class="col-md-6 mt-3">
@@ -51,7 +50,7 @@
         <br>
         <div class="row d-flex flex-row justify-content-center mb-4">
             <div class="col-md-6" style="text-align: center;">
-                <button type="submit" href="#" class="btn btn-primary">Guardar</button>
+                <button type="submit" href="#"  class="btn btn-primary">Guardar</button>
                 <a class="btn btn-danger" href={{url("/alumno")}}>Cancelar</a>
             </div>
         </button>
@@ -65,7 +64,8 @@
         event.preventDefault();
         let form=new FormData(document.getElementById("form-files"));
         form.append("id_type",document.getElementById("id_type").value);
-        form.append("id_student",1);
+        form.append("id_student",{{ Auth::user()->id}});
+        console.log(JSON.stringify(form));
         let url = "{{url('/alumno')}}";
         let init={
             method:"POST",
@@ -74,7 +74,7 @@
         console.log(init);
         let req=await fetch(url,init);
         if(req.ok){
-            //window.location.href="{{url('/alumno')}}";
+            window.location.href="{{url('/alumno')}}";
         }
         else{
             Swal.fire({
