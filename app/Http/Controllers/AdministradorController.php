@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\administrador;
+use App\Models\files;
 use App\Models\acceso;
 use Illuminate\Http\Request;
-use App\Models\files;
+use App\Models\administrador;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AdministradorController extends Controller
@@ -23,17 +24,18 @@ class AdministradorController extends Controller
         $students=acceso::all();
 
         $orders = DB::table('files')
-                ->select('id_student', DB::raw('SUM(cantidad) as total'))
+                ->select('id_student','id_type',DB::raw('SUM(types.cantidad) as total'))
                 ->join('types', 'types.id', '=', 'files.id_type')
-                ->where ('files.id_student','=',1)
                 ->groupBy('id_student')
                 ->get();
-                // var_dump($orders);
-                // die;
+
            if ($orders->isEmpty()) {
-               $orders[0]=0.0;
+               $orders[0]=0;
            }
-        return view('administrador/vista_admin',compact("files","students","orders"));
+           if(strlen(Auth::user()->matricula)==5){
+            return view('administrador/vista_admin',compact("files","students","orders"));
+           }
+           return redirect('/alumno');
     }
 
     /**

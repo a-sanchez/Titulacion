@@ -42,13 +42,19 @@
                     <td>{{$file->type->tipo}}</td>
                     <td>{{$file->type->cantidad}}</td>
                     <td width="20%">
-                        <a  type="button" style="color: red;" href="{{url("/storage/docs/contrato_adjuntos/{$file->id_student}/{$file->file}")}}" class="btn"><i style="font-size:1.5rem" id="file-alt"  class="fas fa-file-alt"></i></a>
+                        <a  type="button" style="color: red;" href="{{url("/storage/docs/alumnos/{$file->id_student}/{$file->file}")}}" class="btn"><i style="font-size:1.5rem" id="file-alt"  class="fas fa-file-alt"></i></a>
                         <a  style="color: black" href="#" onclick='borrarFile({{$file->id}})' class="btn"><i style="font-size:1.5rem" id="trash-alt"  class="fas fa-trash-alt"></i></a>
                     </td>                 
                 </tr> 
                  @endforeach 
                  <div class="row mt-3">
-                    <label style="text-align: center;">Total de creditos: <input  type="text" disabled value="{{$orders[0]->total}}" size="5" style="text-align:center;color:black"></label>
+                    <label style="text-align: center;">Total de creditos: <input  type="text" disabled value=
+                        @if($orders->isEmpty())
+                            0
+                        @else
+                            {{$orders[0]->total}}
+                        @endif
+                         size="5" style="text-align:center;color:black"></label>
                 </div>    
                 </tbody>
             </table> 

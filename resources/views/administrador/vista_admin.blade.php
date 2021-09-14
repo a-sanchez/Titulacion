@@ -14,7 +14,6 @@
 
 </style>
 @endsection
-
 @section("body")
 <div class="mt-3">
     <div class="row">
@@ -29,6 +28,7 @@
             <table class="table pt-2" id="archivos_table">
                 <thead style="background-color:#000000;color:white">
                     <th>Nombre del alumno</th>
+                    <th>Matricula</th>
                     <th>Semestre</th>
                     <th>Tutor</th>
                     <th>Cantidad de créditos</th>
@@ -36,17 +36,13 @@
                 <tbody>
                 @foreach($students as $student)
                 <tr style="vertical-align: middle;">
+                    @if(Str::length($student->matricula)==8)
                     <td>{{$student->nombre_completo}}</td>
+                    <td>{{$student->matricula}}</td>
                     <td>{{$student->semestre}}</td>
                     <td>{{$student->tutor}}</td>
-                    <td>                        
-                        @if($orders[0]==0)
-                        0
-                        @else 
-                        {{$orders[0]->total}}
-                        @endif
-
-                    </td>               
+                    <td>  {{$student->getCreditos()}}</td>                   
+                    @endif              
                 </tr>
                 @endforeach
                 </tbody>
@@ -54,7 +50,7 @@
         </div>
     </div>
     <footer class="d-flex align-items-center">
-      <p class="m-0">Si deseas conocer cuantos créditos se otorgan por actividad dar clic al icono </p>
+      <p class="mt-3">Si deseas conocer cuantos créditos se otorgan por actividad dar clic al icono </p>
      <a class="ms-3 "href={{url("creditos/creditos")}}><i style="font-size:2rem;color:red" id="list-alt"  class="far fa-list-alt"></i></a>
     </footer>
 </div>

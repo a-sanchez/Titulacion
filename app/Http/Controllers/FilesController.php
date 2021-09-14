@@ -6,6 +6,7 @@ use App\Models\files;
 use Illuminate\Http\Request;
 use App\Models\type;
 use App\Models\acceso;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class FilesController extends Controller
@@ -19,14 +20,13 @@ class FilesController extends Controller
     {
         $files=files::all();
         $student=acceso::all();
-
+        $user=Auth::user()->id;
         $orders = DB::table('files')
                 ->select('id_student', DB::raw('SUM(cantidad) as total'))
                 ->join('types', 'types.id', '=', 'files.id_type')
-                ->where ('files.id_student','=',1)
+                ->where ('files.id_student','=',$user)
                 ->groupBy('id_student')
                 ->get();
-                
         return view('alumno.cat_archivos',compact("files","student","orders"));
 
 

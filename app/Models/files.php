@@ -28,5 +28,6 @@ class files extends Model
         $ruta ="public/docs/alumnos/".$this->attributes["id_student"];
         return $ruta;
     }
-    
+ 
+   
 }
