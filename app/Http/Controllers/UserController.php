@@ -40,4 +40,8 @@ class UserController extends Controller
         Auth::logout();
         return redirect()->route("login");
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 654139bca681bc3b9871a8be0460b1f7c4a482c2

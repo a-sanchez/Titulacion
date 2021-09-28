@@ -11,7 +11,6 @@
         text-transform: uppercase;
         text-align: center;
     }
-
 </style>
 @endsection
 
@@ -48,6 +47,7 @@
                 </tr> 
                  @endforeach 
                  <div class="row mt-3">
+<<<<<<< HEAD
                     <label style="text-align: center;">Total de creditos: <input  type="text" disabled value=
                         @if($orders->isEmpty())
                             0
@@ -55,6 +55,9 @@
                             {{$orders[0]->total}}
                         @endif
                          size="5" style="text-align:center;color:black"></label>
+=======
+                    <label style="text-align: center;">Total de creditos: <input  type="text" disabled value="{{$orders[0]->total}}" size="5" style="text-align:center;color:black"></label>
+>>>>>>> 654139bca681bc3b9871a8be0460b1f7c4a482c2
                 </div>    
                 </tbody>
             </table> 

@@ -11,7 +11,6 @@
         text-transform: uppercase;
         text-align: center;
     }
-
 </style>
 @endsection
 @section("body")
@@ -41,8 +40,19 @@
                     <td>{{$student->matricula}}</td>
                     <td>{{$student->semestre}}</td>
                     <td>{{$student->tutor}}</td>
+<<<<<<< HEAD
                     <td>  {{$student->getCreditos()}}</td>                   
                     @endif              
+=======
+                    <td>                        
+                        @if($orders[0]==0)
+                        0
+                        @else 
+                        {{$orders[0]->total}}
+                        @endif
+
+                    </td>               
+>>>>>>> 654139bca681bc3b9871a8be0460b1f7c4a482c2
                 </tr>
                 @endforeach
                 </tbody>
@@ -50,7 +60,11 @@
         </div>
     </div>
     <footer class="d-flex align-items-center">
+<<<<<<< HEAD
       <p class="mt-3">Si deseas conocer cuantos créditos se otorgan por actividad dar clic al icono </p>
+=======
+      <p class="m-0">Si deseas conocer cuantos créditos se otorgan por actividad dar clic al icono </p>
+>>>>>>> 654139bca681bc3b9871a8be0460b1f7c4a482c2
      <a class="ms-3 "href={{url("creditos/creditos")}}><i style="font-size:2rem;color:red" id="list-alt"  class="far fa-list-alt"></i></a>
     </footer>
 </div>
@@ -60,6 +74,5 @@
     let table = $("#archivos_table").dataTable({
         responsive: true
     });
-
 </script>
 @endsection

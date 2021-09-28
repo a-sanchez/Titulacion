@@ -9,7 +9,6 @@
         background: #0d6efd;
         border: #0d6efd;
     }
-
 </style>
 @endsection
 
