@@ -28,7 +28,11 @@ Route::post('/login',[UserController::class,"inicioSesion"]);
      return view('administrador.add_admin');
  });
 
+<<<<<<< HEAD
+ Route::post('administrador', []);
+=======
  //Route::post('administrador', []);
+>>>>>>> 654139bca681bc3b9871a8be0460b1f7c4a482c2
     
   Route::resource('usuarios',AccesoController::class);
   Route::resource('administrador',AdministradorController::class);

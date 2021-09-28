@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\type;
+use App\Models\acceso;
 
 class files extends Model
 {
@@ -14,6 +15,10 @@ class files extends Model
     public function type(){
         return $this->belongsTo(type::class,"id_type");
     }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 654139bca681bc3b9871a8be0460b1f7c4a482c2
     public function setFile($file)
     {
         $filename =$file->hashName();
@@ -26,5 +31,10 @@ class files extends Model
         $ruta ="public/docs/alumnos/".$this->attributes["id_student"];
         return $ruta;
     }
+<<<<<<< HEAD
+ 
+   
+=======
     
+>>>>>>> 654139bca681bc3b9871a8be0460b1f7c4a482c2
 }

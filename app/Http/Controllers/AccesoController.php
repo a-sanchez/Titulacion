@@ -15,7 +15,7 @@ class AccesoController extends Controller
      */
     public function index()
     {
-        //
+        return view('alumno.cat_archivos');
     }
 
     /**
