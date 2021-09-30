@@ -99,15 +99,8 @@ async function submitForm(){
                 icon: 'error',
                 title: 'Error',
                 text: res
-<<<<<<< HEAD
             })
             document.getElementById('password').value = "";
         }
 </script>
 @endsection
-=======
-            });
-            document.getElementById('password').value = "";
-        }
-</script>
->>>>>>> 654139bca681bc3b9871a8be0460b1f7c4a482c2
