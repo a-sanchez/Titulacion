@@ -54,7 +54,12 @@
                             {{$orders[0]->total}}
                         @endif
                          size="5" style="text-align:center;color:black"></label>
+<<<<<<< HEAD
+
+                     <label style="text-align: center;">Total de creditos: <input  type="text" disabled value="{{$orders[0]->total}}" size="5" style="text-align:center;color:black"></label>
+=======
                     <label style="text-align: center;">Total de creditos: <input  type="text" disabled value="{{$orders[0]->total}}" size="5" style="text-align:center;color:black"></label>
+>>>>>>> e59a151abe534abefa9d346c22039e876961164f
                 </div>    
                 </tbody>
             </table> 
