@@ -21,8 +21,7 @@ class AdministradorController extends Controller
     {
 
         $files=files::all();
-        $students=acceso::all();
-
+        $students=acceso::whereRaw('LENGTH(matricula) = 8')->get();
         $orders = DB::table('files')
                 ->select('id_student','id_type',DB::raw('SUM(types.cantidad) as total'))
                 ->join('types', 'types.id', '=', 'files.id_type')
@@ -37,6 +36,7 @@ class AdministradorController extends Controller
            }
            return redirect('/alumno');
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -62,15 +62,27 @@ class AdministradorController extends Controller
         return response()->json("Usuario creado con exito",201);
     }
 
+
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\administrador  $administrador
      * @return \Illuminate\Http\Response
      */
-    public function show(administrador $administrador)
+    public function show(Request $request,$id)
     {
-        //
+        $students = acceso::where('id',$id)->get();
+        $files=DB::table('files')
+        ->select('actividad','file','types.tipo','types.cantidad','files.id_student','files.id','files.created_at as fecha')
+        ->join('types', 'types.id', '=', 'files.id_type')
+        ->where('files.id_student',$id)->get();
+        $orders = DB::table('files')
+        ->select('id_student', DB::raw('SUM(cantidad) as total'))
+        ->join('types', 'types.id', '=', 'files.id_type')
+        ->where ('files.id_student','=',$id)
+        ->groupBy('id_student')
+        ->get();
+        return view('administrador.vista_archivos',compact('files','students','orders'));
     }
 
     /**

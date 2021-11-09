@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\files;
-use Illuminate\Http\Request;
 use App\Models\type;
+use App\Models\files;
 use App\Models\acceso;
-use Illuminate\Support\Facades\Auth;
+use App\Models\karnetPDF;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class FilesController extends Controller
 {
@@ -18,16 +19,22 @@ class FilesController extends Controller
      */
     public function index()
     {
-        $files=files::all();
         $student=acceso::all();
+        
         $user=Auth::user()->id;
+        $files=DB::table('files')
+        ->select('actividad','file','types.tipo','types.cantidad','files.id_student','files.id','files.created_at as fecha')
+        ->join('types', 'types.id', '=', 'files.id_type')
+        ->where('files.id_student',$user)->get();
+
         $orders = DB::table('files')
                 ->select('id_student', DB::raw('SUM(cantidad) as total'))
                 ->join('types', 'types.id', '=', 'files.id_type')
                 ->where ('files.id_student','=',$user)
                 ->groupBy('id_student')
                 ->get();
-        return view('alumno.cat_archivos',compact("files","student","orders"));
+        
+        return view('alumno.cat_archivos',compact("files","student","orders","user"));
 
 
     }
@@ -42,6 +49,11 @@ class FilesController extends Controller
         $type=type::all();
         return view('alumno.add_archivo',["types"=>$type]);
        
+    }
+
+    public function karnetPdf($id)
+    {
+        return karnetPDF::create($id);
     }
 
     /**

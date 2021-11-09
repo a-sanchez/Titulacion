@@ -31,18 +31,20 @@
                     <th>Semestre</th>
                     <th>Tutor</th>
                     <th>Cantidad de créditos</th>
+                    <th>Archivos</th>
                 </thead>
                 <tbody>
-                @foreach($students as $student)
-                <tr style="vertical-align: middle;">
-                    @if(Str::length($student->matricula)==8)
-                    <td>{{$student->nombre_completo}}</td>
-                    <td>{{$student->matricula}}</td>
-                    <td>{{$student->semestre}}</td>
-                    <td>{{$student->tutor}}</td>
-                    <td>  {{$student->getCreditos()}}</td>                   
-                    @endif              
-                </tr>
+                    @foreach($students as $student)
+                    <tr style="vertical-align: middle;">
+                        <td>{{$student->nombre_completo}}</td>
+                        <td>{{$student->matricula}}</td>
+                        <td>{{$student->semestre}}</td>
+                        <td>{{$student->tutor}}</td>
+                        <td> {{$student->getCreditos()}}</td>
+                        <td width='10%'>  
+                            <a  type="button" style="color: red;" href="{{url("administrador/{$student->id}")}}"  class="btn"><i style="font-size:1.5rem" id="file-alt"  class="fas fa-file-alt"></i></a>
+                        </td>
+                    </tr>
                 @endforeach
                 </tbody>
             </table>
@@ -54,9 +56,10 @@
     </footer>
 </div>
 @endsection
+
 @section("scripts")
 <script>
-    let table = $("#archivos_table").dataTable({
+    let table = $("#archivos_table").DataTable({
         responsive: true
     });
 </script>

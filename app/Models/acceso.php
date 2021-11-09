@@ -16,6 +16,7 @@ class acceso extends Model
     protected $guarded=[];
     protected $appends=["creditos"];
 
+
     public function getCreditos(){
        $files = files::where("id_student",$this->attributes["id"])->get();
        $total = 0;

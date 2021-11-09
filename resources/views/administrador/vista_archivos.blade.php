@@ -16,20 +16,32 @@
 
 @section("body")
 <div class="mt-3">
-    <div class="row">
-        <div class="col-12 col-md-12">
-            <h1 class=" mb-3 animate-box fadeInLeft animated" data-animate-effect="fadeInLeft" style="text-align:center;font-weight: bold;background:red;color:white;text-transform:uppercase;">
-                ¡BIENVENIDO {{ Auth::user()->nombre_completo}} !
+    <div class="row" style="background:red;display:flex;">
+        <div class="col-md-1" style="height:40px;">
+            <a  style="color: white" href="{{url('administrador/')}}"  class="btn"><i  id="arrow-left"  class="fas fa-arrow-left"></i><b>Regresar</b></a>
+            <h1 class=" mb-3 animate-box fadeInLeft animated" data-animate-effect="fadeInLeft" >
+            </h1>
+        </div>
+        <div class="col-md-11" style="height:48px;">
+            <h1 class=" mb-3 animate-box fadeInLeft animated" data-animate-effect="fadeInLeft" style="font-weight: bold;background:red;color:white;text-align:center">
+                ESTUDIANTE: @foreach($students as $student)
+                {{$student->nombre_completo}}
+                @endforeach
             </h1>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
-            <a type="button" class="btn" id="btnAgregar" href="{{url("alumno/create")}}" style="background:#DD0031;color:white;">Agregar Archivo</a>
-        </div>
-        <div class="col-md-6" style="text-align: end;">
-            <a type="button" class="btn" id="btnGenerar"  href="{{url("karnet_pdf/{$user}")}}" style="background:#2100dd;color:white;">Generar karnet</a>
-        </div>
+        <h6 style="text-transform:uppercase">
+        @foreach($students as $student)
+        </br>
+        <b>CARRERA:</b>{{$student->carrera}}
+        </br>
+        <b>MATRICULA:</b>{{$student->matricula}}
+        </br>
+        <b>SEMESTRE:</b> {{$student->semestre}}
+        </br>
+        <b>TUTOR:</b>{{$student->tutor}}
+            @endforeach</h6>
     </div>
     <div class="row">
         <div class="col-12">
@@ -38,7 +50,7 @@
                     <th>Nombre del archivo</th>
                     <th>Tipo de Cédito</th>
                     <th>Cantidad de créditos</th>
-                    <th>Fecha</th>
+                    <td>Fecha</td>
                     <th>Opciones</th>
                 </thead>
                 <tbody>
@@ -118,11 +130,10 @@
                     </td>
                     <td width="20%">
                         <a  type="button" target="_blank" style="color: red;" href="{{url("/storage/docs/alumnos/{$file->id_student}/{$file->file}")}}" class="btn"><i style="font-size:1.5rem" id="file-alt"  class="fas fa-file-alt"></i></a>
-                        <a  style="color: black" href="#" onclick='borrarFile({{$file->id}})' class="btn"><i style="font-size:1.5rem" id="trash-alt"  class="fas fa-trash-alt"></i></a>
                     </td>                 
                 </tr> 
-                 @endforeach 
-                 <div class="row mt-3">
+                @endforeach
+                <div class="row mt-3">
                     <label style="text-align: center;">Total de creditos: <input  type="text" disabled value=
                         @if($orders->isEmpty())
                             0
@@ -130,15 +141,11 @@
                             {{$orders[0]->total}}
                         @endif
                          size="5" style="text-align:center;color:black"></label>
-                </div>    
+                </div> 
                 </tbody>
             </table> 
         </div>
     </div>
-    <footer class="d-flex align-items-center">
-      <p class="m-4">Si deseas conocer cuantos créditos se otorgan por actividad dar clic al icono </p>
-     <a href={{url("creditos/view_creditos")}}><i style="font-size:2rem;color:red" id="list-alt"  class="far fa-list-alt"></i></a>
-    </footer>
 </div>
 @endsection
 @section("scripts")
@@ -147,26 +154,5 @@
         
         responsive: true
     });
-    
-     async function borrarFile(id) {
-    event.preventDefault();
-    let url='{{url("/alumno/{id}")}}'.replace('{id}',id);
-    let init = {
-        method: "DELETE",
-        headers: {  'X-CSRF-TOKEN': "{{csrf_token()}}" }
-        }
-    
-    let req=await fetch(url,init);
-    if (req.ok){
-        location.reload();
-    }
-    else{
-        Swal.fire({
-            icon:"error",
-            title:"Error",
-            text:"ERROR AL BORRAR ARCHIVO"
-        });
-    }
-    }
 </script>
 @endsection

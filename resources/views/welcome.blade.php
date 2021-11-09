@@ -99,7 +99,7 @@ async function submitForm(){
                 icon: 'error',
                 title: 'Error',
                 text: res
-            })
+            });
             document.getElementById('password').value = "";
         }
 </script>
