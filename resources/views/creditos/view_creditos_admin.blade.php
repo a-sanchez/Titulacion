@@ -86,7 +86,7 @@
                                 <td>1 crédito</td>
                             </tr>
                             <tr style="vertical-align: middle;background-color: #FBE5D6;">
-                                <td>Conferencias (para obtener 1 crédito deberás de contar por lo menos con 5 conferencias por semestre)</td>
+                                <td>Conferencias (para obtener 1 crédito deberás de contar por lo menos con 5 conferencias por semestre,obligatorio subir la reseña)</td>
                                 <td>0.2 crédito</td>
                             </tr>
                         </tbody>
@@ -183,8 +183,8 @@
                         </thead>
                         <tbody>
                             <tr style="vertical-align: middle;background-color: #FFF2CC;">
-                                <td>1 sesión individual y 1 grupal </td>
-                                <td>1 crédito</td>
+                                <td>3 sesiones individuales y 2 grupal </td>
+                                <td>5 créditos</td>
                             </tr>
                         </tbody>
                     </table>

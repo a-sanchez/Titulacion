@@ -12,6 +12,7 @@
 </style>
 @endsection
 
+
 @section("body")
 <div class="container mt-3">
     <div class="col-md-12">
@@ -34,9 +35,17 @@
             <label for="tipo_credito" >Tipo de crédito</label>
             <select class="form-select" id="id_type" name="id_type" style="background: #DDDDDD;">
                 <option selected disabled value="0">Seleccione:</option>
-                    @foreach($types as $type)
-                    <option value="{{$type->id}}">{{$type->tipo}}</option>
-                    @endforeach
+                    @if($archivos[0]->opcion==1){
+                        @foreach($type2 as $tipo)
+                        <option value="{{$tipo->id}}">{{$tipo->tipo}}</option>
+                        @endforeach
+                    }
+                    @elseif($archivos[0]->opcion==2){
+                        @foreach($types as $type)
+                        <option value="{{$type->id}}">{{$type->tipo}}</option>
+                        @endforeach
+                    }  
+                    @endif
             </select>
             </div>
         </div>
@@ -44,7 +53,7 @@
         <div class="row d-flex flex-row justify-content-center" style="text-align: center;">
             <div class="col-md-6">
             <label for="file" >Adjuntar archivo</label>
-            <input type="file" class="form-control-file" id="file" name="file" style="background: #DDDDDD;">
+            <input type="file" class="form-control-file" id="file" name="file" style="background: #DDDDDD;" required>
             </div>
         </div>
         <br>

@@ -24,7 +24,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <table class="table pt-2" id="archivos_table">
+            <table class="table pt-2" id="archivos_table" width="100%">
                 <thead style="background-color:#000000;color:white">
                     <th>Nombre del alumno</th>
                     <th>Matricula</th>
@@ -41,8 +41,9 @@
                         <td>{{$student->semestre}}</td>
                         <td>{{$student->tutor}}</td>
                         <td> {{$student->getCreditos()}}</td>
-                        <td width='10%'>  
-                            <a  type="button" style="color: red;" href="{{url("administrador/{$student->id}")}}"  class="btn"><i style="font-size:1.5rem" id="file-alt"  class="fas fa-file-alt"></i></a>
+                        <td style="text-align:center">  
+                            <a  target="_blank" type="button" style="color: red;" href="{{url("administrador/{$student->id}")}}"  class="btn"><i style="font-size:1.5rem" id="file-alt"  class="fas fa-file-alt"></i></a>
+                            <a  target="_blank" type="button" style="color: red;" href="{{url("karnet_pdf/{$student->id}")}}"  class="btn"><i style="font-size:1.5rem" id="tasks"  class="fas fa-tasks"></i></a>
                         </td>
                     </tr>
                 @endforeach
@@ -51,8 +52,12 @@
         </div>
     </div>
     <footer class="d-flex align-items-center">
-      <p class="mt-3">Si deseas conocer cuantos créditos se otorgan por actividad dar clic al icono </p>
-     <a class="ms-3 "href={{url("creditos/creditos")}}><i style="font-size:2rem;color:red" id="list-alt"  class="far fa-list-alt"></i></a>
+            <p class="mt-3">Si deseas conocer cuantos créditos se otorgan por actividad dar clic al icono </p>
+            <a class="ms-3 "href={{url("creditos/creditos")}}><i style="font-size:2rem;color:red" id="list-alt"  class="far fa-list-alt"></i></a>
+    </footer>
+    <footer class="d-flex align-items-center">
+        <a class="mt-3" style="color: red;font-weight: bold;text-decoration:none" href={{url("/configuracion")}}>Configuración</a>
+        <a class="mt-3" href={{url("/configuracion")}} ><i style="font-size:1.5rem;color:red" id="user-cog"  class="fas fa-user-cog"></i></a>
     </footer>
 </div>
 @endsection

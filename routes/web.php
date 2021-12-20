@@ -4,6 +4,7 @@ use App\Http\Controllers\AccesoController;
 use App\Http\Controllers\FilesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdministradorController;
+use App\Http\Controllers\AdministradorCreditosController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -52,3 +53,6 @@ Route::get('creditos/creditos',function(){
 /**-------------------KARNET------------------------- */
 Route::get("karnet_pdf/{id}",[FilesController::class,'karnetPdf']);
 });
+
+/**--------------------------CONFIGURACION---------- */
+Route::resource('configuracion', AdministradorCreditosController::class);

@@ -46,8 +46,15 @@ class FilesController extends Controller
      */
     public function create()
     {
+        $user=Auth::user()->id;
+        $archivos = DB::select("select CASE WHEN EXISTS (select id_type,id_student from titulacion.files where id_student=$user and id_type=2) THEN 1
+        ELSE 2
+        END as opcion;");
+        $type2=DB::table('types')
+                ->select('id','tipo','cantidad')
+                ->where ('id','!=',5)->get();
         $type=type::all();
-        return view('alumno.add_archivo',["types"=>$type]);
+        return view('alumno.add_archivo',compact("archivos","type2"),["types"=>$type]);
        
     }
 

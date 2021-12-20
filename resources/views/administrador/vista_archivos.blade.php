@@ -129,7 +129,7 @@
                     {{$dia}} {{date("j",strtotime($file->fecha))}} {{$mes1}} {{date("Y",strtotime($file->fecha))}} {{date("g:i a",strtotime($file->fecha))}}
                     </td>
                     <td width="20%">
-                        <a  type="button" target="_blank" style="color: red;" href="{{url("/storage/docs/alumnos/{$file->id_student}/{$file->file}")}}" class="btn"><i style="font-size:1.5rem" id="file-alt"  class="fas fa-file-alt"></i></a>
+                        <a   type="button" target="_blank" style="color: red;" href="{{url("/storage/docs/alumnos/{$file->id_student}/{$file->file}")}}" class="btn"><i style="font-size:1.5rem" id="file-alt"  class="fas fa-file-alt"></i></a>
                     </td>                 
                 </tr> 
                 @endforeach

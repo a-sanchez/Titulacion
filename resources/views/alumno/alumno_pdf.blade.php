@@ -1,19 +1,33 @@
+
 @php
     $num = 0;
 @endphp
+<table width="100%" style="text-align:center"  class="uppercase">
+<tr>
+    <td><b>NOMBRE COMPLETO:</b> {{$student->nombre_completo}}</td>
+</tr>
+<tr >
+    <td ><b>CARRERA:</b> {{Str::upper($student->carrera)}}</td>
+</tr>
+<tr>
+    <td><b>MATRICULA:</b>{{$student->matricula}}</td>
+</tr>
+<tr>
+    <td></td>
+</tr>
+</table>
 
-
-<table width="100%">
+<table width="100%" style="text-align:center" >
     <tr style="background-color:rgb(185, 14, 14); color:white;text-align:center">
         <td>Administrativo</td>
     </tr>
 </table>
-<table width="100%">
+<table width="100%" style="text-align:center">
 <tr style="background-color:rgb(185, 14, 14); color:white;text-align:center">
-<td border=".5">N°</td>
-<td border=".5">Descripción</td>
-<td border=".5">Fecha</td>
-<td border=".5">No. Créditos</td>
+<td border=".5" width="8%">N°</td>
+<td border=".5" width="47%">Descripción</td>
+<td border=".5" width="30%">Fecha</td>
+<td border=".5" width="15%">No. Créditos</td>
 </tr>
 @foreach($files as $file)
 @if($file->id_type==1)
@@ -75,17 +89,17 @@
 @endif
 @endforeach
 </table>
-<table width="100%">
+<table width="100%" style="text-align:center">
     <tr style="background-color:rgb(185, 14, 14); color:white;text-align:center">
         <td>Administrativo(Conferencia)</td>
     </tr>
 </table>
-<table width="100%">
+<table width="100%" style="text-align:center" >
 <tr style="background-color:rgb(185, 14, 14); color:white;text-align:center">
-<td border=".5">N°</td>
-<td border=".5">Descripción</td>
-<td border=".5">Fecha</td>
-<td border=".5">No. Créditos</td>
+<td border=".5" width="8%" >N°</td>
+<td border=".5" width="47%">Descripción</td>
+<td border=".5" width="30%">Fecha</td>
+<td border=".5" width="15%">No. Créditos</td>
 </tr>
 @foreach($files as $file)
 @if($file->id_type==2)
@@ -151,17 +165,17 @@
 @endif
 @endforeach
 </table>
-<table width="100%">
+<table width="100%" style="text-align:center">
     <tr style="background-color:rgb(185, 14, 14); color:white;text-align:center">
         <td>Deportivo</td>
     </tr>
 </table>
-<table width="100%">
+<table width="100%" style="text-align:center">
 <tr style="background-color:rgb(185, 14, 14); color:white;text-align:center">
-<td border=".5">N°</td>
-<td border=".5">Descripción</td>
-<td border=".5">Fecha</td>
-<td border=".5">No. Créditos</td>
+<td border=".5" width="8%">N°</td>
+<td border=".5" width="47%">Descripción</td>
+<td border=".5" width="30%">Fecha</td>
+<td border=".5" width="15%">No. Créditos</td>
 </tr>
 @foreach($files as $file)
 @if($file->id_type==3)
@@ -225,17 +239,17 @@
     @endif
 @endforeach
 </table>
-<table width="100%">
+<table width="100%" style="text-align:center">
     <tr style="background-color:rgb(185, 14, 14); color:white;text-align:center">
         <td>Cultural</td>
     </tr>
 </table>
-<table width="100%">
+<table width="100%" style="text-align:center">
     <tr style="background-color:rgb(185, 14, 14); color:white;text-align:center">
-    <td border=".5">N°</td>
-    <td border=".5">Descripción</td>
-    <td border=".5">Fecha</td>
-    <td border=".5">No. Créditos</td>
+    <td border=".5" width="8%">N°</td>
+    <td border=".5" width="47%">Descripción</td>
+    <td border=".5" width="30%">Fecha</td>
+    <td border=".5" width="15%">No. Créditos</td>
     </tr>
     @foreach($files as $file)
     @if($file->id_type==4)
@@ -301,17 +315,17 @@
     </table>
 
 
-<table width="100%">
+<table width="100%" style="text-align:center">
     <tr style="background-color:rgb(185, 14, 14); color:white;text-align:center">
         <td>Tutorias</td>
     </tr>
 </table>
-<table width="100%">
+<table width="100%" style="text-align:center">
     <tr style="background-color:rgb(185, 14, 14); color:white;text-align:center">
-    <td border=".5">N°</td>
-    <td border=".5">Descripción</td>
-    <td border=".5">Fecha</td>
-    <td border=".5">No. Créditos</td>
+    <td border=".5" width="8%">N°</td>
+    <td border=".5" width="47%">Descripción</td>
+    <td border=".5" width="30%">Fecha</td>
+    <td border=".5" width="15%">No. Créditos</td>
     </tr>
     @foreach($files as $file)
     @if($file->id_type==5)
@@ -376,18 +390,18 @@
     @endforeach
     </table>
 
-<table width="100%">
+<table width="100%" style="text-align:center">
     <tr style="background-color:rgb(185, 14, 14); color:white;text-align:center">
         <td>Extension</td>
     </tr>
 </table>
 
-<table width="100%">
+<table width="100%" style="text-align:center">
     <tr style="background-color:rgb(185, 14, 14); color:white;text-align:center">
-    <td border=".5">N°</td>
-    <td border=".5">Descripción</td>
-    <td border=".5">Fecha</td>
-    <td border=".5">No. Créditos</td>
+    <td border=".5" width="8%" >N°</td>
+    <td border=".5" width="47%">Descripción</td>
+    <td border=".5" width="30%">Fecha</td>
+    <td border=".5" width="15%">No. Créditos</td>
     </tr>
     @foreach($files as $file)
     @if($file->id_type==6)
@@ -452,17 +466,17 @@
     @endforeach
     </table>
 
-<table width="100%">
+<table width="100%" style="text-align:center">
     <tr style="background-color:rgb(185, 14, 14); color:white;text-align:center">
         <td>TITULACION(TESIS/PROYECTO/TRABAJOS)</td>
     </tr>
 </table>
-<table width="100%">
+<table width="100%" style="text-align:center">
     <tr style="background-color:rgb(185, 14, 14); color:white;text-align:center">
-    <td border=".5">N°</td>
-    <td border=".5">Descripción</td>
-    <td border=".5">Fecha</td>
-    <td border=".5">No. Créditos</td>
+    <td border=".5" width="8%">N°</td>
+    <td border=".5" width="47%">Descripción</td>
+    <td border=".5" width="30%">Fecha</td>
+    <td border=".5" width="15%">No. Créditos</td>
     </tr>
     @foreach($files as $file)
     @if($file->id_type==7)
@@ -527,17 +541,17 @@
     @endforeach
     </table>
 
-<table width="100%">
+<table width="100%" style="text-align:center">
     <tr style="background-color:rgb(185, 14, 14); color:white;text-align:center">
         <td>TITULACION(DIPLOMADO,MAESTRIA,EXPERIENCIA PROFESIONAL/EGEL)</td>
     </tr>
 </table>
-<table width="100%">
+<table width="100%" style="text-align:center">
     <tr style="background-color:rgb(185, 14, 14); color:white;text-align:center">
-    <td border=".5">N°</td>
-    <td border=".5">Descripción</td>
-    <td border=".5">Fecha</td>
-    <td border=".5">No. Créditos</td>
+    <td border=".5" width="8%">N°</td>
+    <td border=".5" width="47%">Descripción</td>
+    <td border=".5" width="30%">Fecha</td>
+    <td border=".5" width="15%">No. Créditos</td>
     </tr>
     @foreach($files as $file)
     @if($file->id_type==8)

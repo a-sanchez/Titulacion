@@ -28,7 +28,7 @@
             <a type="button" class="btn" id="btnAgregar" href="{{url("alumno/create")}}" style="background:#DD0031;color:white;">Agregar Archivo</a>
         </div>
         <div class="col-md-6" style="text-align: end;">
-            <a type="button" class="btn" id="btnGenerar"  href="{{url("karnet_pdf/{$user}")}}" style="background:#2100dd;color:white;">Generar karnet</a>
+            <a target="_blank" type="button" class="btn" id="btnGenerar"  href="{{url("karnet_pdf/{$user}")}}" style="background:#2100dd;color:white;">Generar karnet</a>
         </div>
     </div>
     <div class="row">
@@ -116,7 +116,7 @@
                         
                     {{$dia}} {{date("j",strtotime($file->fecha))}} {{$mes1}} {{date("Y",strtotime($file->fecha))}} {{date("g:i a",strtotime($file->fecha))}}
                     </td>
-                    <td width="20%">
+                    <td width="15%">
                         <a  type="button" target="_blank" style="color: red;" href="{{url("/storage/docs/alumnos/{$file->id_student}/{$file->file}")}}" class="btn"><i style="font-size:1.5rem" id="file-alt"  class="fas fa-file-alt"></i></a>
                         <a  style="color: black" href="#" onclick='borrarFile({{$file->id}})' class="btn"><i style="font-size:1.5rem" id="trash-alt"  class="fas fa-trash-alt"></i></a>
                     </td>                 
@@ -137,7 +137,7 @@
     </div>
     <footer class="d-flex align-items-center">
       <p class="m-4">Si deseas conocer cuantos créditos se otorgan por actividad dar clic al icono </p>
-     <a href={{url("creditos/view_creditos")}}><i style="font-size:2rem;color:red" id="list-alt"  class="far fa-list-alt"></i></a>
+        <a href={{url("creditos/view_creditos")}}><i style="font-size:2rem;color:red" id="list-alt"  class="far fa-list-alt"></i></a>
     </footer>
 </div>
 @endsection

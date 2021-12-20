@@ -93,6 +93,7 @@ async function submitForm(){
                     window.location.href = "{{url("/administrador")}}";
                 }
             }
+            else{
             //SI NO  AGREGA MENSAJE EN SWALERT
             let res = await req.json();
             Swal.fire({
@@ -100,6 +101,7 @@ async function submitForm(){
                 title: 'Error',
                 text: res
             });
+            }
             document.getElementById('password').value = "";
         }
 </script>
