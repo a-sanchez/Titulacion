@@ -25,12 +25,13 @@
     <div class="row">
         <div class="col-12">
             <table class="table pt-2" id="archivos_table" width="100%">
-                <thead style="background-color:#000000;color:white">
+                <thead style="background-color:#000000;color:white;vertical-align: middle;">
                     <th>Nombre del alumno</th>
                     <th>Matricula</th>
                     <th>Semestre</th>
                     <th>Tutor</th>
                     <th>Cantidad de créditos</th>
+                    <th width="15%">Cantidad de créditos autorizados</th>
                     <th>Archivos</th>
                 </thead>
                 <tbody>
@@ -41,9 +42,10 @@
                         <td>{{$student->semestre}}</td>
                         <td>{{$student->tutor}}</td>
                         <td> {{$student->getCreditos()}}</td>
+                        <td>{{$student->getStatus()}}</td>
                         <td style="text-align:center">  
-                            <a  target="_blank" type="button" style="color: red;" href="{{url("administrador/{$student->id}")}}"  class="btn"><i style="font-size:1.5rem" id="file-alt"  class="fas fa-file-alt"></i></a>
-                            <a  target="_blank" type="button" style="color: red;" href="{{url("karnet_pdf/{$student->id}")}}"  class="btn"><i style="font-size:1.5rem" id="tasks"  class="fas fa-tasks"></i></a>
+                            <a  target="_blank" type="button" style="color: red;" href="{{url("administrador/{$student->id}")}}"  class="btn"><i style="font-size:1.5rem" id="tasks"  class="fas fa-tasks"></i></a>
+                            <a  target="_blank" type="button" style="color: red;" href="{{url("karnet_pdf/{$student->id}")}}"  class="btn"><i style="font-size:1.5rem" id="file-alt"  class="fas fa-file-alt"></i></a>
                         </td>
                     </tr>
                 @endforeach

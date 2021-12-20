@@ -74,6 +74,7 @@
         let form=new FormData(document.getElementById("form-files"));
         form.append("id_type",document.getElementById("id_type").value);
         form.append("id_student",{{ Auth::user()->id}});
+        form.append("id_estatus",0);
         console.log(JSON.stringify(form));
         let url = "{{url('/alumno')}}";
         let init={

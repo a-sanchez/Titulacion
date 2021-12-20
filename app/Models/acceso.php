@@ -25,4 +25,15 @@ class acceso extends Model
        }
        return $total;
     }
+
+    public function getStatus(){
+        $files = files::where("id_student",$this->attributes["id"])
+                        ->where('id_estatus','1')
+                        ->get();
+        $total = 0;
+        foreach ($files as $file) {
+            $total += $file->type->cantidad;
+        }
+        return $total;
+     }
 }

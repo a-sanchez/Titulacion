@@ -34,11 +34,12 @@
     <div class="row">
         <div class="col-12">
             <table class="table pt-2" id="archivos_table" width="100%">
-                <thead style="background-color:#000000;color:white">
+                <thead style="background-color:#000000;color:white;text-align: center;vertical-align: middle;">
                     <th>Nombre del archivo</th>
                     <th>Tipo de Cédito</th>
                     <th>Cantidad de créditos</th>
                     <th>Fecha</th>
+                    <th>Estatus</th>
                     <th>Opciones</th>
                 </thead>
                 <tbody>
@@ -116,6 +117,12 @@
                         
                     {{$dia}} {{date("j",strtotime($file->fecha))}} {{$mes1}} {{date("Y",strtotime($file->fecha))}} {{date("g:i a",strtotime($file->fecha))}}
                     </td>
+                    <td>@if ($file->id_estatus == "0")
+                        Esperando autorización  
+                        @else
+                        Autorizado  
+                    @endif
+                    </td>
                     <td width="15%">
                         <a  type="button" target="_blank" style="color: red;" href="{{url("/storage/docs/alumnos/{$file->id_student}/{$file->file}")}}" class="btn"><i style="font-size:1.5rem" id="file-alt"  class="fas fa-file-alt"></i></a>
                         <a  style="color: black" href="#" onclick='borrarFile({{$file->id}})' class="btn"><i style="font-size:1.5rem" id="trash-alt"  class="fas fa-trash-alt"></i></a>
@@ -128,6 +135,15 @@
                             0
                         @else
                             {{$orders[0]->total}}
+                        @endif
+                         size="5" style="text-align:center;color:black"></label>
+                </div>
+                <div class="row mt-4">
+                    <label style="text-align: center;">Total de creditos autorizados: <input  type="text" disabled value=
+                        @if($orders2->isEmpty())
+                            0
+                        @else
+                            {{$orders2[0]->total}}
                         @endif
                          size="5" style="text-align:center;color:black"></label>
                 </div>    

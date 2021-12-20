@@ -27,7 +27,6 @@ class AdministradorController extends Controller
                 ->join('types', 'types.id', '=', 'files.id_type')
                 ->groupBy('id_student')
                 ->get();
-
            if ($orders->isEmpty()) {
                $orders[0]=0;
            }
@@ -73,15 +72,18 @@ class AdministradorController extends Controller
     {
         $students = acceso::where('id',$id)->get();
         $files=DB::table('files')
-        ->select('actividad','file','types.tipo','types.cantidad','files.id_student','files.id','files.created_at as fecha')
+        ->select('actividad','file','types.tipo','types.cantidad','files.id_student','files.id','files.created_at as fecha','files.id_estatus','files.id_type','files.nueva_cantidad')
         ->join('types', 'types.id', '=', 'files.id_type')
         ->where('files.id_student',$id)->get();
         $orders = DB::table('files')
         ->select('id_student', DB::raw('SUM(cantidad) as total'))
         ->join('types', 'types.id', '=', 'files.id_type')
         ->where ('files.id_student','=',$id)
+        ->where('files.id_estatus','=','1')
         ->groupBy('id_student')
         ->get();
+        // dump($files);
+        // die;
         return view('administrador.vista_archivos',compact('files','students','orders'));
     }
 

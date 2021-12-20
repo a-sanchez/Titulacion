@@ -23,7 +23,7 @@ class FilesController extends Controller
         
         $user=Auth::user()->id;
         $files=DB::table('files')
-        ->select('actividad','file','types.tipo','types.cantidad','files.id_student','files.id','files.created_at as fecha')
+        ->select('actividad','file','types.tipo','types.cantidad','files.id_student','files.id','files.id_estatus','files.created_at as fecha')
         ->join('types', 'types.id', '=', 'files.id_type')
         ->where('files.id_student',$user)->get();
 
@@ -33,8 +33,16 @@ class FilesController extends Controller
                 ->where ('files.id_student','=',$user)
                 ->groupBy('id_student')
                 ->get();
-        
-        return view('alumno.cat_archivos',compact("files","student","orders","user"));
+        $orders2 = DB::table('files')
+        ->select('id_student', DB::raw('SUM(cantidad) as total'))
+        ->join('types', 'types.id', '=', 'files.id_type')
+        ->where ('files.id_student','=',$user)
+        ->where('files.id_estatus','=','1')
+        ->groupBy('id_student')
+        ->get();
+        // dump($files);
+        // die;
+        return view('alumno.cat_archivos',compact("files","student","orders","user","orders2"));
 
 
     }
@@ -110,9 +118,11 @@ class FilesController extends Controller
      * @param  \App\Models\files  $files
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, files $files)
+    public function update(Request $request, $id)
     {
-        //
+        $administrador = files::find($id);
+        $update=$administrador->update($request->all());
+        return $update;
     }
 
     /**
